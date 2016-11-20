@@ -1,0 +1,44 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> Orders</h3>
+    </div>
+    <div class="panel-body">
+        <a class="btn btn-default">Create</a>
+        <datatable
+                #orders
+                [rows]="rows"
+                [scrollbarH]="true"
+                [rowHeight]="40"
+                [detailRowHeight]="100"
+                class="material">
+            <datatable-row-detail-template>
+                <template let-row="row">
+                    <div style="padding-left:35px;">
+                        <div><strong>Details</strong></div>
+                        <a class="btn btn-default">Add meal</a>
+                        <a class="btn btn-default">Change</a>
+                        <a class="btn btn-default">Cancel {{row['id']}}</a>
+                    </div>
+                </template>
+            </datatable-row-detail-template>
+            <datatable-column [width]="50">
+                <template let-row="row">
+                    <button
+                            [class.icon-right]="!row.$$expanded"
+                            [class.icon-down]="row.$$expanded"
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)">
+                    </button>
+                </template>
+            </datatable-column>
+            <datatable-column name="Id" [width]="50"></datatable-column>
+            <datatable-column name="Restaurant"></datatable-column>
+            <datatable-column name="Status" [width]="80"></datatable-column>
+            <datatable-column name="Created by" [prop]="'owner'" [width]="200">
+            <datatable-column name="Created" [width]="100"></datatable-column>
+            </datatable-column>
+            <datatable-column name="Ordered" [width]="100"></datatable-column>
+            <datatable-column name="Delivered" [width]="100"></datatable-column>
+        </datatable>
+    </div>
+</div>

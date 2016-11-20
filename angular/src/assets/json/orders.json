@@ -1,0 +1,7 @@
+{
+  "data": [
+    {"id": 1, "restaurant": "Healthy food", "status": "Created", "created": "13:01", "owner": "someone@domain.com"},
+    {"id": 2, "restaurant": "Healthy food", "status": "Delivered", "created": "12:01", "ordered": "12:30", "delivered": "13:00"},
+    {"id": 3, "restaurant": "Chinese Rice", "status": "Canceled", "created": "12:03"}
+  ]
+}

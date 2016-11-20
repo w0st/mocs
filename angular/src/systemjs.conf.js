@@ -11,7 +11,8 @@
     // map tells the System loader where to look for things
     var map = {
         'app': 'src/tmp/app',
-        'test': 'src/tmp/test'
+        'test': 'src/tmp/test',
+        'angular2-data-table': 'node_modules/angular2-data-table/release/index.js'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
