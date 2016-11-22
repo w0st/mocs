@@ -5,4 +5,8 @@ class Meal < ApplicationRecord
   validates :order, :user, :name, :price, presence: true
   validates :price, numericality: { greater_than: 0.00 }
   validates :user, uniqueness: { scope: :order }
+
+  def user_login
+    user.login
+  end
 end
