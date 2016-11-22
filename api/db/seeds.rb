@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create(login: 'someone', provider: 'Github', email: 'someone@domain.com')
-user2 = User.create(login: 'someone2', provider: 'Github', email: 'someone2@domain.com')
+user = User.create(uid: 'someone', provider: 'Github', email: 'someone@domain.com')
+user2 = User.create(uid: 'someone2', provider: 'Github', email: 'someone2@domain.com')
 restaurant = Restaurant.create(name: 'Chinese Food')
 restaurant2 = Restaurant.create(name: 'M. Gessler')
 order = Order.create(owner: user, restaurant: restaurant, status: 'Created', created_at: DateTime.now)
