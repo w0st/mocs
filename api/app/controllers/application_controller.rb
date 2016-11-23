@@ -17,7 +17,13 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if request.headers["X-Api-Key"]
+      User.where(oauth_token: request.headers["X-Api-Key"]).first
+    else
+      nil
+    end
   end
+
+
 
 end
