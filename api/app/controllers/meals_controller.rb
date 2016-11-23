@@ -1,7 +1,6 @@
 class MealsController < ApplicationController
 
   def create
-    byebug
     meal = Meal.new(meal_params)
     meal.order = Order.find(params[:order_id])
     meal.user = current_user
@@ -12,9 +11,13 @@ class MealsController < ApplicationController
     end
   end
 
-  # TODO (meal_id)
   def destroy
-
+    meal = Meal.where(id: params[:id], user: current_user).first
+    if meal.destroy
+      render json: meal, status: :ok
+    else
+      render_error(meal, :unprocessable_entity)
+    end
   end
 
   private
