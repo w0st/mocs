@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> New order</h3>
+    </div>
+    <div class="panel-body">
+        <div class="alert alert-success" [hidden]="!added">Your order was successfully added.</div>
+        <div class="alert alert-danger" [hidden]="!wrong">Sorry, something went wrong.</div>
+        <form #orderForm="ngForm">
+            <div class="form-group">
+                <label for="name">Restaurant name</label>
+                <input type="text" class="form-control" id="name"
+                       required
+                       [(ngModel)]="model.name" name="name"
+                       [disabled]="submitted"
+                       #name="ngModel" >
+                <div [hidden]="name.valid || name.pristine || submitted"
+                     class="alert alert-danger">
+                    Restaurant's name is required
+                </div>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-default" [disabled]="!orderForm.form.valid || submitted" (click)="create(model)">Submit</button>
+    </div>
+</div>
