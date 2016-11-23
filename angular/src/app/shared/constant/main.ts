@@ -1,5 +1,8 @@
 export const MAIN = {
     APP: {
-        BRAND: 'Angular 2 Starter'
+        BRAND: 'MOCS'
+    },
+    API: {
+        URL: 'http://localhost:3000/'
     }
 };

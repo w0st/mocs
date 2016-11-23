@@ -12,7 +12,8 @@
     var map = {
         'app': 'src/tmp/app',
         'test': 'src/tmp/test',
-        'angular2-data-table': 'node_modules/angular2-data-table/release/index.js'
+        'angular2-data-table': 'node_modules/angular2-data-table/release/index.js',
+        'ng2-ui-auth': 'node_modules/ng2-ui-auth/dist/ng2-ui-auth.js'
     };
 
     // packages tells the System loader how to load when no filename and/or no extension
