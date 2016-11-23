@@ -6,6 +6,8 @@ import { OrderComponent } from './order.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { OrderService } from './order.service';
+import { OrdersListsComponent } from './orders-lists.component';
+import { OrderListComponent } from './order-list.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { OrderService } from './order.service';
     ],
     declarations: [
         OrdersComponent,
-        OrderComponent
+        OrderComponent,
+        OrdersListsComponent,
+        OrderListComponent
     ],
     exports: [
         OrdersComponent

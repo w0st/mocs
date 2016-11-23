@@ -13,15 +13,14 @@
                 class="material">
             <datatable-row-detail-template>
                 <template let-row="row">
-                    <div>Actions:</div>
+                    <div [hidden]="row['status'] == 'Delivered' || row['status'] == 'Canceled'">Actions:</div>
                     <div style="padding-left:35px;">
                         <a class="btn btn-default"
                            [hidden]="row['status'] != 'Created'"
                            [routerLink]="['/order/'+row['id']+'/add']"
                         >Add meal</a>
-                        <a class="btn btn-default">Show meals</a>
-                        <a class="btn btn-default" [hidden]="row['status']=='Canceled' || row['status']=='Delivered'" (click)="changeStatus(row, nextState(row))">Change to {{nextState(row)}}</a>
-                        <a class="btn btn-default" [hidden]="row['status']=='Canceled' || row['status']=='Delivered'" (click)="changeStatus(row, 'Canceled')">Cancel</a>
+                        <a class="btn btn-default" [hidden]="row['status'] == 'Canceled' || row['status'] == 'Delivered'" (click)="changeStatus(row, nextState(row))">Change to {{nextState(row)}}</a>
+                        <a class="btn btn-default" [hidden]="row['status'] == 'Canceled' || row['status'] == 'Delivered'" (click)="changeStatus(row, 'Canceled')">Cancel</a>
                     </div>
                 </template>
             </datatable-row-detail-template>

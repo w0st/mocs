@@ -1,0 +1,51 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Restaurant</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Ordered</th>
+                <th>Delivered</th>
+                <th>Items</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+        <template ngFor let-order [ngForOf]="orders">
+            <tr>
+                <td>{{order.id}}</td>
+                <td>{{order['restaurant-name']}}</td>
+                <td>{{order.status}}</td>
+                <td>{{order['created-at'] | date:'d-M-yyyy H:m' }}</td>
+                <td>{{order['ordered-at'] | date:'d-M-yyyy H:m' }}</td>
+                <td>{{order['delivered-at'] | date:'d-M-yyyy H:m' }}</td>
+                <td>{{order['meals'].length}}</td>
+            </tr>
+            <tr class="active">
+                <td colspan="7">
+                    <div>
+                        <strong>Meals</strong>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Owner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let meal of order.meals">
+                                    <td>{{meal.name}}</td>
+                                    <td>{{meal.price}}</td>
+                                    <td>{{meal['user-login']}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </template>
+        </tbody>
+    </table>
+</div>
