@@ -7,6 +7,6 @@ class Meal < ApplicationRecord
   validates :user, uniqueness: { scope: :order }
 
   def user_login
-    user.login
+    user.email
   end
 end

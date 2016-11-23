@@ -9,4 +9,16 @@ class Order < ApplicationRecord
   def restaurant_name
     restaurant.name
   end
+
+  def status=(value)
+      case value
+        when 'Ordered'
+            self.ordered_at = DateTime.now
+        when 'Canceled'
+            self.canceled_at = DateTime.now
+        when 'Delivered'
+            self.delivered_at = DateTime.now
+      end
+      write_attribute(:status, value)
+    end
 end
