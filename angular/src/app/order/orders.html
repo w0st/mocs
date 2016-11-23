@@ -15,8 +15,11 @@
                 <template let-row="row">
                     <div>Actions:</div>
                     <div style="padding-left:35px;">
+                        <a class="btn btn-default"
+                           [hidden]="row['status'] != 'Created'"
+                           [routerLink]="['/order/'+row['id']+'/add']"
+                        >Add meal</a>
                         <a class="btn btn-default">Show meals</a>
-                        <a class="btn btn-default" [hidden]="row['status'] != 'Created'">Add meal</a>
                         <a class="btn btn-default" [hidden]="row['status']=='Canceled' || row['status']=='Delivered'" (click)="changeStatus(row, nextState(row))">Change to {{nextState(row)}}</a>
                         <a class="btn btn-default" [hidden]="row['status']=='Canceled' || row['status']=='Delivered'" (click)="changeStatus(row, 'Canceled')">Cancel</a>
                     </div>
@@ -48,6 +51,11 @@
             <datatable-column name="Delivered" [width]="200" [prop]="'delivered-at'">
                 <template let-value="value">
                     {{value | date:'d-M-yyyy H:m'}}
+                </template>
+            </datatable-column>
+            <datatable-column name="Items" [width]="200" [prop]="'meals'">
+                <template let-value="value">
+                    {{value.length}}
                 </template>
             </datatable-column>
         </datatable>

@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> New meal (Order: {{orderId}})</h3>
+    </div>
+    <div class="panel-body">
+        <div class="alert-danger" [hidden]="!errorMessage">{{errorMessage}}</div>
+        <form #mealForm="ngForm">
+            <div class="form-group">
+                <label for="name">Meal name</label>
+                <input type="text" class="form-control" id="name"
+                       required
+                       [(ngModel)]="model.name" name="name"
+                       [disabled]="submitted"
+                       #name="ngModel">
+                <div [hidden]="name.valid || name.pristine || submitted"
+                     class="alert alert-danger">
+                    Meal name is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" step="0.01" pattern="[0-9]{1,3}(\.[0-9]{1,2})?" class="form-control" id="price"
+                       required
+                       [(ngModel)]="model.price" name="price"
+                       [disabled]="submitted"
+                       #price="ngModel">
+                <div [hidden]="price.valid || price.pristine || submitted"
+                     class="alert alert-danger">
+                    Price is incorrect
+                </div>
+            </div>
+
+        </form>
+        <button type="submit" class="btn btn-default" [disabled]="!mealForm.form.valid || submitted" (click)="create(model)">Submit</button>
+    </div>
+</div>

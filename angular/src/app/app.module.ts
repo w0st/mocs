@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { CustomConfig, Ng2UiAuthModule } from 'ng2-ui-auth';
 import { IProviders } from 'ng2-ui-auth/declerations/config.service';
 import { UserModule } from './user/user.module';
+import { MealModule } from './meal/meal.module';
 
 export const GITHUB_CLIENT_ID = 'b70a7829812203cb9f3f';
 export class MyAuthConfig extends CustomConfig {
@@ -32,6 +33,7 @@ export class MyAuthConfig extends CustomConfig {
         OrderModule,
         LoginModule,
         UserModule,
+        MealModule,
         Ng2UiAuthModule.getWithConfig(MyAuthConfig),
         routing
     ],
