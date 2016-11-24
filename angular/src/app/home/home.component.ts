@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
                 console.log('set token = ', params.token);
                 this.auth.setToken(params.token);
                 this.data.isLogged = this.auth.isAuthenticated();
+                this.shared.notify();
             }
         });
     }

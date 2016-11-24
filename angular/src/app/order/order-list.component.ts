@@ -8,7 +8,7 @@ import { Meal } from '../meal/meal';
 })
 export class OrderListComponent {
     @Input('orders') orders: Order[];
-    @Output() changed: EventEmitter<string> = new EventEmitter();
+    @Output() changed: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(private mealService: MealService) {
     }
