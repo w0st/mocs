@@ -20,5 +20,9 @@ class Order < ApplicationRecord
             self.delivered_at = DateTime.now
       end
       write_attribute(:status, value)
-    end
+  end
+
+  def open?
+    self.status == 'Created'
+  end
 end
