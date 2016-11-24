@@ -1,5 +1,6 @@
 # Meal ordering coordination system
 [![Build Status](https://travis-ci.org/w0st/mocs.svg?branch=master)](https://travis-ci.org/w0st/mocs)
+[![Heroku](heroku-badge.png)](https://mocs-angular2.herokuapp.com/)
 ### Model
 Proposition for conceptual model
 
@@ -27,3 +28,23 @@ I've tried [angular2-jsonapi](https://github.com/ghidoz/angular2-jsonapi), but a
 
 datatable-row-detail-template not working with nested *ngFor.
 
+### How start?
+####Back-end
+```
+cd /api
+bundle install
+rake db:setup
+rails s
+```
+####Front-end
+```
+cd /angular
+npm install
+npm start
+```
+Remember setting ```ENV['GITHUB_KEY']``` and ```ENV['GITHUB_SECRET']```!
+Check also files: `angular/src/app/home.html` and `api/app/controllers/sessions_controller.rb`
+
+The Heroku version is available [here](https://mocs-angular2.herokuapp.com/).
+
+In Heroku version are few differences  to meet requirements OAuth mechanism.
