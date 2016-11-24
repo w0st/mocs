@@ -1,0 +1,12 @@
+rvm:
+  - 2.2.3
+before_script:
+before_script:
+  - createdb mocs_test
+  - createdb mocs_prod
+  - psql -c 'grant all privileges on database mocs_test to postgres'
+  - psql -c 'grant all privileges on database mocs_prod to postgres'
+before_install:
+  - cd api
+addons:
+  postgresql: '9.3'
