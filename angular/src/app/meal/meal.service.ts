@@ -31,4 +31,11 @@ export class MealService {
         })
             .toPromise();
     }
+
+    public deleteMeal(mealId, orderId) {
+        return this.http.delete(CONSTANTS.MAIN.API.URL + 'orders/' + orderId + '/meals/' + mealId,  {
+            headers: this.getAuthorizationHeader()
+        })
+            .toPromise();
+    }
 }

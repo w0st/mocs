@@ -27,7 +27,6 @@ export class OrderService {
     parseOrders(json): Order[] {
         let orders: Order[] = [];
         _.forEach(json.data, order => {
-           console.log('order = ', order);
             let o = new Order;
             o.id = order.id;
             _.forOwn(order.attributes, (value, key) => {
@@ -38,6 +37,7 @@ export class OrderService {
             _.forEach(order.relationships.meals.data, rmeal => {
                 // find rmeal.id
                 let meal: Meal = (_.find(json.included, {id: rmeal.id}) as {attributes}).attributes;
+                meal.id = rmeal.id;
                 meals.push(meal);
             });
             o.meals = meals;
@@ -84,6 +84,13 @@ export class OrderService {
             }
         };
         return this.http.patch(CONSTANTS.MAIN.API.URL + 'orders' + '/' + order.id, JSON.stringify(data), {
+            headers: this.getAuthorizationHeader()
+        })
+            .toPromise();
+    }
+
+    public deleteOrder(orderId) {
+        return this.http.delete(CONSTANTS.MAIN.API.URL + 'orders/' + orderId,  {
             headers: this.getAuthorizationHeader()
         })
             .toPromise();

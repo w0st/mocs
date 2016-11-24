@@ -12,21 +12,14 @@ export class OrdersComponent {
     selected = [];
 
     constructor(private orderService: OrderService) {
+        this.fetch();
+    }
+
+    fetch() {
         this.orderService.getOrders().then(results => {
             this.rows = results;
             console.log('results = ', results);
         });
-    }
-
-    fetch(cb) {
-        let req = new XMLHttpRequest();
-        req.open('GET', 'assets/json/orders.json');
-
-        req.onload = () => {
-            cb(JSON.parse(req.response));
-        };
-
-        req.send();
     }
 
     toggleExpandRow(row) {
@@ -38,9 +31,18 @@ export class OrdersComponent {
     changeStatus(order, newStatus) {
         this.orderService.updateStatusOnOrder(order, newStatus).then(result => {
             console.log('result = ', result);
-        }, error =>
-            console.log('error = ', error)
-        );
+            this.fetch();
+        }, error => {
+            console.log('error = ', error);
+        });
+    }
+
+    deleteOrder(orderId) {
+        this.orderService.deleteOrder(orderId).then(result => {
+            this.fetch();
+        }, error => {
+            console.log('error = ', error);
+        });
     }
 
 

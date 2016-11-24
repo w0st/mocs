@@ -37,24 +37,29 @@
             <datatable-column name="Id" [width]="50"></datatable-column>
             <datatable-column name="Restaurant" [prop]="'restaurant-name'"></datatable-column>
             <datatable-column name="Status" [width]="80"></datatable-column>
-            <datatable-column name="Created" [prop]="'created-at'">
+            <datatable-column name="Created" [width]="150" [prop]="'created-at'">
                 <template let-value="value">
                     {{value | date:'d-M-yyyy H:m'}}
                 </template>
             </datatable-column>
-            <datatable-column name="Ordered" [width]="200" [prop]="'ordered-at'">
+            <datatable-column name="Ordered" [width]="150" [prop]="'ordered-at'">
                 <template let-value="value">
                     {{value | date:'d-M-yyyy H:m'}}
                 </template>
             </datatable-column>
-            <datatable-column name="Delivered" [width]="200" [prop]="'delivered-at'">
+            <datatable-column name="Delivered" [width]="150" [prop]="'delivered-at'">
                 <template let-value="value">
                     {{value | date:'d-M-yyyy H:m'}}
                 </template>
             </datatable-column>
-            <datatable-column name="Items" [width]="200" [prop]="'meals'">
+            <datatable-column name="Items" [width]="70" [prop]="'meals'">
                 <template let-value="value">
                     {{value.length}}
+                </template>
+            </datatable-column>
+            <datatable-column name="Delete" [width]="70">
+                <template let-row="row">
+                    <button *ngIf="row.meals.length == 0" class="btn btn-default" (click)="deleteOrder(row['id'])">×</button>
                 </template>
             </datatable-column>
         </datatable>

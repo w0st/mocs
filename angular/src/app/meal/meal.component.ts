@@ -9,6 +9,7 @@ import { MealService } from './meal.service';
 export class MealComponent implements OnInit {
     orderId: number;
     model: Meal = {
+        id: null,
         name: '',
         price: ''
     };

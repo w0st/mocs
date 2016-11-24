@@ -14,6 +14,10 @@ export class OrdersListsComponent {
     isActiveVisible: boolean = true;
 
     constructor(private orderService: OrderService) {
+        this.fetch();
+    }
+
+    fetch() {
         this.orderService.getOrders().then(results => {
             this.historyOrders = _.filter(results, order => {
                 return order.status === 'Delivered' || order.status === 'Canceled';
@@ -27,6 +31,11 @@ export class OrdersListsComponent {
 
     show(tab) {
         this.isActiveVisible = (tab === 'Active');
+    }
+
+    notify(event) {
+        console.log('event =', event);
+        this.fetch();
     }
 
 }
